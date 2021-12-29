@@ -2,6 +2,7 @@ package com.nested_map_viewer.controller;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nested_map_viewer.model.Link;
 import com.nested_map_viewer.model.NestedMap;
 import javafx.collections.FXCollections;
 import javafx.scene.control.ListView;
@@ -15,7 +16,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 import java.io.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class ViewController extends Controller {
     public Menu fileMenu;
@@ -40,7 +44,7 @@ public class ViewController extends Controller {
     public ListView<String> nestedView7;
 
     NestedMap<String> nestedMap;
-    LinkedList<String> link;
+    Link<String> link;
 
     HashMap<Integer, ListView<String>> indexToView;
     HashMap<Integer, TextField> indexToFilter;
@@ -131,7 +135,7 @@ public class ViewController extends Controller {
             TypeReference<Map<String, Object>> typeRef = new TypeReference<>() {
             };
             nestedMap = new NestedMap<>(new ObjectMapper().readValue(jsonStr, typeRef));
-            link = new LinkedList<>();
+            link = new Link<>();
             updateViews();
             setShortcutHandler();
         }
@@ -159,7 +163,7 @@ public class ViewController extends Controller {
         for (int i = 0; i < 8; i++) {
             TextField field = indexToFilter.get(i);
             ListView<String> view = indexToView.get(i);
-            if (i <=  link.size()) {
+            if (i <= link.size()) {
                 setNewSelection(view, field, nestedMap.getKeyTrace().get(i));
             } else {
                 cancelSelection(view, field);
@@ -250,7 +254,7 @@ public class ViewController extends Controller {
         if (selectedFile != null) {
             FileInputStream fin = new FileInputStream(selectedFile);
             ObjectInputStream in = new ObjectInputStream(fin);
-            link = (LinkedList<String>) in.readObject();
+            link = (Link<String>) in.readObject();
             updateViews();
             for (int i = 0; i < link.size(); i++) {
                 indexToView.get(i).getSelectionModel().select(link.get(i));
