@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class NestedMap<T> {
     final int depth = 8;
-    List<T> link = new LinkedList<>();
+    Link<T> link = new Link<>();
     Map<T, Object> nodeMap;
     List<List<T>> keyTrace;
 
@@ -18,7 +18,7 @@ public class NestedMap<T> {
         return link;
     }
 
-    public void setLink(List<T> link) {
+    public void setLink(Link<T> link) {
         this.link = link;
         setKeyTraceFromDepth(link.size());
     }
@@ -33,7 +33,7 @@ public class NestedMap<T> {
 
     private Map<T, Object> setKeyTraceFromDepth(int index) {
         if (index < 0 || index >= depth)
-            throw new IllegalArgumentException("index {"+ index +"} must between 0 and " + depth);
+            throw new IllegalArgumentException("index {" + index + "} must between 0 and " + depth);
 
         Map<T, Object> map;
         if (index == 0) {
