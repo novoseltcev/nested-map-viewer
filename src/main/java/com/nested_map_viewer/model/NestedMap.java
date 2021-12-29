@@ -1,12 +1,18 @@
 package com.nested_map_viewer.model;
 
+import java.io.StreamCorruptedException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Represent a nested map with the selection of elements in the chain
+ * @author Novoseltcev Stanislav
+ * @version 1.0
+ */
 public class NestedMap<T> {
     final int depth = 8;
-    Link<T> link = new Link<>();
+    Chain<T> chain = new Chain<>();
     Map<T, Object> nodeMap;
     List<List<T>> keyTrace;
 
@@ -14,13 +20,17 @@ public class NestedMap<T> {
         nodeMap = map;
     }
 
-    public List<T> getLink() {
-        return link;
+    public List<T> getChain() {
+        return chain;
     }
 
-    public void setLink(Link<T> link) {
-        this.link = link;
-        setKeyTraceFromDepth(link.size());
+    public void setChain(Chain<T> chain) throws StreamCorruptedException {
+        this.chain = chain;
+        try {
+            setKeyTraceFromDepth(chain.size());
+        } catch (NullPointerException e) {
+            throw new StreamCorruptedException();
+        }
     }
 
     public int getDepth() {
@@ -31,6 +41,9 @@ public class NestedMap<T> {
         return keyTrace;
     }
 
+    /**
+     * Recursive function that sets the selection along the length of the chain
+     */
     private Map<T, Object> setKeyTraceFromDepth(int index) {
         if (index < 0 || index >= depth)
             throw new IllegalArgumentException("index {" + index + "} must between 0 and " + depth);
@@ -41,12 +54,10 @@ public class NestedMap<T> {
             keyTrace = new LinkedList<>();
         } else {
             map = setKeyTraceFromDepth(index - 1);
-            map = (Map<T, Object>) map.get(link.get(index - 1));
+            map = (Map<T, Object>) map.get(chain.get(index - 1));
         }
         if (map != null)
             keyTrace.add(map.keySet().stream().toList());
         return map;
     }
-
-
 }

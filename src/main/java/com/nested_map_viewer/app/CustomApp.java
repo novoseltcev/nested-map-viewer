@@ -12,6 +12,11 @@ import java.io.File;
 import java.net.URL;
 
 
+/**
+ * Abstract class for standalone window inherited javafx.Application
+ * @author Novoseltcev Stanislav
+ * @version 1.0
+ */
 public abstract class CustomApp extends Application {
     private final String startFxmlFilename;
     private final String title;

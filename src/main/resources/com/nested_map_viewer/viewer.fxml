@@ -1,64 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<Pane prefHeight="467.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.nested_map_viewer.controller.ViewController">
+
+<Pane prefHeight="467.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nested_map_viewer.controller.ViewController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <MenuBar prefHeight="34.0" prefWidth="116.0">
         <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
-            <MenuItem mnemonicParsing="false" text="Open" onAction="#openFile"/>
+            <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open" />
         </Menu>
-        <Menu mnemonicParsing="false" text="Link">
-            <MenuItem fx:id="loadLinkMenu" mnemonicParsing="false" text="Load" onAction="#loadLink"/>
-            <MenuItem fx:id="saveLinkMenu" mnemonicParsing="false" text="Save" onAction="#saveLink"/>
+        <Menu fx:id="linkMenu" disable="true" mnemonicParsing="false" text="Link">
+            <MenuItem fx:id="loadLinkMenu" mnemonicParsing="false" onAction="#loadLink" text="Load" />
+            <MenuItem fx:id="saveLinkMenu" mnemonicParsing="false" onAction="#saveLink" text="Save" />
         </Menu>
     </MenuBar>
 
     <VBox layoutX="55.0" layoutY="55.0" prefHeight="435.0" prefWidth="760.0">
         <HBox prefHeight="400.0" prefWidth="720.0">
             <VBox>
-                <TextField fx:id="nodeFilter" editable="false" minHeight="45.0" prefWidth="90.0"/>
-                <ListView fx:id="nodeView" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0"
-                          prefWidth="90.0" onMouseClicked="#clickedByView0"/>
+                <TextField fx:id="nodeFilter" editable="false" minHeight="45.0" prefWidth="90.0" />
+                <ListView fx:id="nodeView" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#clickedByView0" prefHeight="350.0" prefWidth="90.0" />
             </VBox>
             <VBox>
-                <TextField fx:id="nestedFilter1" editable="false" minHeight="45.0" prefWidth="90.0"/>
-                <ListView fx:id="nestedView1" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0"
-                          prefWidth="90.0" onMouseClicked="#clickedByView1"/>
+                <TextField fx:id="nestedFilter1" editable="false" minHeight="45.0" prefWidth="90.0" />
+                <ListView fx:id="nestedView1" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#clickedByView1" prefHeight="350.0" prefWidth="90.0" />
             </VBox>
             <VBox>
-                <TextField fx:id="nestedFilter2" editable="false" minHeight="45.0" prefWidth="90.0"/>
-                <ListView fx:id="nestedView2" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0"
-                          prefWidth="90.0" onMouseClicked="#clickedByView2"/>
+                <TextField fx:id="nestedFilter2" editable="false" minHeight="45.0" prefWidth="90.0" />
+                <ListView fx:id="nestedView2" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#clickedByView2" prefHeight="350.0" prefWidth="90.0" />
             </VBox>
             <VBox>
-                <TextField fx:id="nestedFilter3" editable="false" minHeight="45.0" prefWidth="90.0"/>
-                <ListView fx:id="nestedView3" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0"
-                          prefWidth="90.0" onMouseClicked="#clickedByView3"/>
+                <TextField fx:id="nestedFilter3" editable="false" minHeight="45.0" prefWidth="90.0" />
+                <ListView fx:id="nestedView3" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#clickedByView3" prefHeight="350.0" prefWidth="90.0" />
             </VBox>
             <VBox>
-                <TextField fx:id="nestedFilter4" editable="false" minHeight="45.0" prefWidth="90.0"/>
-                <ListView fx:id="nestedView4" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0"
-                          prefWidth="90.0" onMouseClicked="#clickedByView4"/>
+                <TextField fx:id="nestedFilter4" editable="false" minHeight="45.0" prefWidth="90.0" />
+                <ListView fx:id="nestedView4" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#clickedByView4" prefHeight="350.0" prefWidth="90.0" />
             </VBox>
             <VBox>
-                <TextField fx:id="nestedFilter5" editable="false" minHeight="45.0" prefWidth="90.0"/>
-                <ListView fx:id="nestedView5" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0"
-                          prefWidth="90.0" onMouseClicked="#clickedByView5"/>
+                <TextField fx:id="nestedFilter5" editable="false" minHeight="45.0" prefWidth="90.0" />
+                <ListView fx:id="nestedView5" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#clickedByView5" prefHeight="350.0" prefWidth="90.0" />
             </VBox>
             <VBox>
-                <TextField fx:id="nestedFilter6" editable="false" minHeight="45.0" prefWidth="90.0"/>
-                <ListView fx:id="nestedView6" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0"
-                          prefWidth="90.0" onMouseClicked="#clickedByView6"/>
+                <TextField fx:id="nestedFilter6" editable="false" minHeight="45.0" prefWidth="90.0" />
+                <ListView fx:id="nestedView6" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#clickedByView6" prefHeight="350.0" prefWidth="90.0" />
             </VBox>
             <VBox>
-                <TextField fx:id="nestedFilter7" editable="false" minHeight="45.0" prefWidth="90.0"/>
-                <ListView fx:id="nestedView7" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0"
-                          prefWidth="90.0" onMouseClicked="#clickedByView7"/>
+                <TextField fx:id="nestedFilter7" editable="false" minHeight="45.0" prefWidth="90.0" />
+                <ListView fx:id="nestedView7" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#clickedByView7" prefHeight="350.0" prefWidth="90.0" />
             </VBox>
         </HBox>
     </VBox>
